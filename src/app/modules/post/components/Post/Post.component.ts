@@ -21,7 +21,6 @@ import { environment } from '../../../../../environments/environment.development
 @Component({
   selector: 'app-post',
   templateUrl: './Post.component.html',
-  styleUrls: ['./post.component.css'],
   imports: [CommonModule, FormsModule],
 })
 export class PostComponent implements AfterViewInit, OnDestroy {
