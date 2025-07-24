@@ -1,9 +1,9 @@
+@import "tailwindcss";
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
-@import "tailwindcss";
 .ce-code {
   background-color: #1f1f1f !important;
   color: #f5f5f5 !important;
