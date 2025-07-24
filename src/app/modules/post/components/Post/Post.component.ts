@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../../../../../environments/environment.development';
 @Component({
   selector: 'app-post',
-  templateUrl: './post.component.html',
+  templateUrl: './Post.component.html',
   styleUrls: ['./post.component.css'],
   imports: [CommonModule, FormsModule],
 })
