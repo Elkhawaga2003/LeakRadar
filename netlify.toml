@@ -1,5 +1,6 @@
 [build]
-  publish = "dist/sponge-bop"
+  command = "ng build --configuration production"
+  publish = "dist/spongeBop/browser"
 
 [[redirects]]
   from = "/*"
