@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl: 'https://localhost:7032',
+  baseUrl: 'https://leakradar.runasp.net',
 };
