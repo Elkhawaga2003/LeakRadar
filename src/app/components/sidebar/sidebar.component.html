@@ -1,0 +1,37 @@
+<nav
+  class="bg-black text-green-400 font-mono p-4 border-b border-green-500 shadow-md animate-fade-in-down relative overflow-hidden">
+  <div class="flex justify-between items-center max-w-7xl mx-auto">
+
+
+    <h1 class="text-2xl font-bold tracking-widest animate-glitch">
+      LeakRadar
+    </h1>
+
+    <!-- Sniper + Bullet Container -->
+    <div class="relative mx-6 w-[50px] h-[40px] overflow-visible">
+      <!-- Sniper Image -->
+      <img src="snipperMan.png" alt="Sniper"
+        class="absolute left-0 bottom-0 w-[100px] h-[60px] object-contain z-10 animate-sniper" />
+
+
+      <!-- Bullet -->
+      <div class="absolute left-[30px] top-[20px] w-2 h-1 bg-green-400 animate-bullet"></div>
+    </div>
+
+    <!-- Nav Links -->
+    <ul class="flex space-x-6">
+      @if(isAdmin){
+      <li><a [routerLink]="['/dashboard']" class="hover:text-cyan-400 transition duration-200">Dashboard</a></li>
+      }
+      <li><a [routerLink]="['/home']" class="hover:text-cyan-400 transition duration-200">Home</a></li>
+      <li><a [routerLink]="['/loaderboard']" class="hover:text-cyan-400 transition duration-200">Leaderboard</a></li>
+      <li><a [routerLink]="['/writeups']" class="hover:text-cyan-400 transition duration-200">WriteUp's</a></li>
+      @if(!isLogged){
+      <li><a [routerLink]="['/auth']" class="hover:text-cyan-400 transition duration-200">Login</a></li>
+      }@else {
+
+      <li><a (click)="LogOut()" class="hover:text-cyan-400 transition duration-200">LogOut</a></li>
+      }
+    </ul>
+  </div>
+</nav>

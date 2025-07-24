@@ -1,0 +1,45 @@
+<div class="min-h-screen bg-[#1a1a1a] text-white p-6 flex flex-col items-center">
+  <div class="bg-[#2c2c2c] w-full max-w-3xl rounded-2xl p-8 shadow-lg">
+    <h2 class="text-3xl font-bold mb-6 text-center">🎭 Role Management</h2>
+
+    <!-- Add Role -->
+    <div class="flex gap-4 mb-6">
+      <input #roleName placeholder="Enter new role name"
+        class="flex-1 p-3 rounded-lg bg-[#1e1e1e] text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500" />
+      <button (click)="CreateRole(roleName.value); roleName.value='';"
+        class="bg-green-600 hover:bg-green-500 px-5 py-2.5 rounded-lg font-semibold shadow-md transition">
+        ➕ Add Role
+      </button>
+    </div>
+
+    <!-- Role List -->
+    <div class="space-y-4">
+      @for(role of roles; track role.id) {
+      <div class="flex items-center justify-between bg-[#1e1e1e] px-4 py-3 rounded-lg">
+        <!-- Role name or editable input -->
+        <div class="text-lg flex-1">
+          <ng-container *ngIf="editingRoleId !== role.id; else editBlock">
+            {{ role.name }}
+          </ng-container>
+          <ng-template #editBlock>
+            <input [(ngModel)]="updatedRoleName"
+              class="bg-[#2c2c2c] text-white border border-gray-700 px-2 py-1 rounded w-full focus:outline-none focus:ring focus:ring-green-500" />
+          </ng-template>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex items-center gap-2 ml-4">
+          <ng-container *ngIf="editingRoleId === role.id; else defaultButtons">
+            <button class="text-green-400 hover:text-green-300" (click)="saveEdit(role)">💾</button>
+            <button class="text-red-400 hover:text-red-300" (click)="cancelEdit()">✖</button>
+          </ng-container>
+          <ng-template #defaultButtons>
+            <button class="text-yellow-400 hover:text-yellow-300" (click)="startEdit(role)">✏️</button>
+            <button class="text-gray-400 hover:text-gray-300" (click)="Delete(role.id)">❌</button>
+          </ng-template>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

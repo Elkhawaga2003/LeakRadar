@@ -1,0 +1,33 @@
+<div class="w-screen min-h-screen bg-[#121212] text-white p-6 font-mono">
+    <h2 class="text-4xl font-extrabold mb-8 text-[#00ffcc] border-b-2 border-[#00ffcc] pb-2 font-sans">
+        🧩 Available CTF Challenges
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let challenge of challenges"
+            class="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg border border-[#2a2a2a] hover:shadow-[#00ffcc44] transition-all">
+
+            <img [src]="challenge.imgUrl || '/assets/challenge-placeholder.png'" alt="challenge"
+                class="w-full h-48 object-cover border-b border-[#333]" />
+
+            <div class="p-5 space-y-2">
+                <h3 class="text-xl font-bold text-[#00ffcc] truncate">
+                    {{ challenge.title || 'Untitled Challenge' }}
+                </h3>
+
+                <p class="text-sm text-gray-400">
+                    🎯 Difficulty: <span class="text-white font-semibold">{{ challenge.difficulty }}</span>
+                </p>
+
+                <p class="text-sm text-gray-400">
+                    🏆 Points: <span class="text-white font-semibold">{{ challenge.points }}</span>
+                </p>
+
+                <a [routerLink]="['/challenge', challenge.id]"
+                    class="inline-block mt-3 text-[#00ffcc] hover:underline text-sm">
+                    View Challenge →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

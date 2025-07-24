@@ -1,0 +1,31 @@
+<div class="bg-[#1e1e1e] border border-gray-700 rounded-2xl p-6 shadow-lg">
+  <h2 class="text-2xl font-bold text-white mb-6">📝 Recent Posts</h2>
+
+  <table class="w-full table-auto text-left">
+    <thead>
+      <tr class="text-gray-300 border-b border-gray-700">
+        <th class="pb-3 text-sm font-medium uppercase tracking-wide">Title</th>
+        <th class="pb-3 text-sm font-medium uppercase tracking-wide">Date</th>
+        <th class="pb-3 text-sm font-medium uppercase tracking-wide text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-200 text-sm divide-y divide-gray-800">
+      @for (post of posts; track post.id) {
+      <tr class="hover:bg-[#2a2a2a] transition-colors">
+        <td class="py-4">{{ post.title }}</td>
+        <td class="py-4">📅 {{ post.createdAt | date: 'mediumDate' }}</td>
+        <td class="py-4 text-center space-x-2">
+          <button [routerLink]="['/writeups/updatewriteup',post.id]" routerLinkActive="router-link-active"
+            class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white text-xs rounded-lg transition-colors">
+            Edit
+          </button>
+          <button (click)="Delete(post.id)"
+            class="px-3 py-1 bg-red-600 hover:bg-red-500 text-white text-xs rounded-lg transition-colors">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

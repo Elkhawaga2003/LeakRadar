@@ -1,0 +1,54 @@
+<div class="min-h-screen bg-[#121212] text-white p-6 font-mono">
+  <div class="max-w-4xl mx-auto bg-[#1a1a1a] rounded-xl border border-[#2a2a2a] shadow-lg p-8">
+
+    <div *ngIf="challenge">
+      <!-- Title -->
+      <h1 class="text-3xl md:text-4xl font-bold text-[#00ffcc] mb-4">{{ challenge.title }}</h1>
+
+      <!-- Meta -->
+      <div class="flex flex-wrap items-center text-sm text-gray-400 gap-4 mb-6">
+        <span>🎯 Difficulty: <span class="text-white font-semibold">{{ challenge.difficulty }}</span></span>
+        <span>🏆 Points: <span class="text-white font-semibold">{{ challenge.points }}</span></span>
+      </div>
+
+      <!-- Cover Image -->
+      <div *ngIf="challenge.imgUrl" class="mb-6">
+        <img [src]="challenge.imgUrl" alt="Cover"
+          class="rounded-lg w-full max-h-72 object-cover border border-[#333]" />
+      </div>
+
+      <!-- Description -->
+      <div class="text-base leading-relaxed text-gray-300 whitespace-pre-line">
+        {{ challenge.description }}
+      </div>
+
+      <!-- Challenge Link (if exists) -->
+      <div *ngIf="challenge.challengeUrl" class="mt-6">
+        <a [href]="challenge.challengeUrl" target="_blank"
+          class="inline-block bg-[#00ffcc] text-black font-semibold px-4 py-2 rounded hover:bg-[#00e6b8] transition">
+          🌐 Open Challenge
+        </a>
+      </div>
+      <div *ngIf="challenge.attachmetUrl" class="mt-4">
+        <a [href]="challenge.attachmetUrl" download
+          class="inline-block bg-[#1e90ff] text-white font-semibold px-4 py-2 rounded hover:bg-[#1c86ee] transition">
+          📎 Download Attachment
+        </a>
+      </div>
+      <!-- Submit Flag Section -->
+      <div class="mt-10">
+        <h2 class="text-xl font-bold text-[#00ffcc] mb-2">Submit Flag</h2>
+        <form (ngSubmit)="submitFlag()" class="flex flex-col sm:flex-row gap-3">
+          <input type="text" [(ngModel)]="submittedFlag" name="flag"
+            class="bg-[#222] border border-[#444] text-white px-4 py-2 rounded w-full sm:w-auto flex-grow focus:outline-none focus:ring-2 focus:ring-[#00ffcc]"
+            placeholder="Enter your flag..." />
+          <button type="submit"
+            class="bg-[#00ffcc] text-black font-semibold px-4 py-2 rounded hover:bg-[#00e6b8] transition">
+            🚀 Submit
+          </button>
+        </form>
+        <p *ngIf="submitMessage" class="mt-2 text-sm text-green-400"> {{submitMessage}} </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="w-screen h-screen bg-[#1e1e1e] text-white font-sans flex flex-col">
+  <!-- 🔷 Header -->
+  <div class="flex justify-between items-center p-4 border-b border-gray-700 bg-[#2c2c2c]">
+    <h1 class="text-2xl font-bold">✍️ New Post</h1>
+    <button (click)="savePost()"
+      class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 transition rounded-lg shadow-md text-sm font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16v4H7v-4m5-4v4m-5-8h10V5H7v3z" />
+      </svg>
+      Save Post
+    </button>
+  </div>
+
+  <!-- 🏷️ Title + 🖼️ Cover Image Upload -->
+  <div class="px-6 pt-4 flex flex-col md:flex-row gap-6">
+    <!-- ✅ Title Input -->
+    <div class="flex-1">
+      <label for="title" class="block text-sm mb-1 text-gray-300">Title</label>
+      <input type="text" name="title" id="title"
+        class="w-full p-3 rounded-lg bg-[#2a2a2a] border border-[#444] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
+        [(ngModel)]="title" placeholder="Write the post title here..." />
+    </div>
+
+    <!-- 🖼️ Cover Upload -->
+    <div class="flex-1">
+      <label for="cover" class="block text-sm mb-1 text-gray-300">Cover Image</label>
+      <input type="file" id="cover" accept="image/*" (change)="onCoverSelected($event)"
+        class="w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition" />
+
+      <div *ngIf="coverPreview" class="mt-3">
+        <img [src]="coverPreview" alt="Cover Preview" width="30" height="30"
+          class="rounded-lg max-h-48 object-cover border border-gray-600 shadow-md" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ✍️ Editor -->
+  <div id="editorjs" class="flex-1 overflow-auto p-6">
+    <!-- EditorJS will go here -->
+  </div>
+</div>

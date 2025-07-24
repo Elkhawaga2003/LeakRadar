@@ -1,1 +1,172 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+@import "tailwindcss";
+.ce-code {
+  background-color: #1f1f1f !important;
+  color: #f5f5f5 !important;
+  border-radius: 8px;
+  padding: 1rem !important;
+  font-family: 'Courier New', monospace !important;
+  font-size: 0.95rem !important;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  min-height: 1rem;
+  height: auto !important;
+  box-sizing: border-box;
+}
+
+/* Make the textarea inside the code block inherit dark styles */
+.ce-code textarea {
+  background-color: transparent !important;
+  color: inherit !important;
+  resize: none !important;
+  height: auto !important;
+  min-height: 1rem !important;
+  border: none !important;
+  outline: none !important;
+  width: 100% !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  box-sizing: border-box;
+}
+
+/* Optional focus border */
+.ce-block--focused .ce-code {
+  border: 1px solid #22c55e;
+}
+/* Editor.js headings styling */
+.ce-header {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.ce-header[data-placeholder="Heading"][data-level="1"],
+.ce-header.ce-header--h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.ce-header.ce-header--h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.ce-header.ce-header--h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.editorjs-viewer pre {
+  background-color: #0d0d0d;
+  color: #00ffcc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+.editorjs-viewer code {
+  color: #00ff44;
+  background-color: #1a1a1a;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+.editorjs-viewer blockquote {
+  border-left: 4px solid #00ffcc;
+  padding-left: 1rem;
+  color: #cccccc;
+  font-style: italic;
+}
+
+.editorjs-viewer h1,
+.editorjs-viewer h2,
+.editorjs-viewer h3 {
+  color: #00ffcc;
+}
+
+.editorjs-viewer a {
+  color: #00ffff;
+  text-decoration: underline;
+}.editorjs-viewer ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #ddd;
+}
+
+.editorjs-viewer ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  color: #ddd;
+}
+
+.editorjs-viewer li {
+  margin-bottom: 0.25rem;
+}
+
+/* Blockquote */
+.editorjs-viewer blockquote {
+  border-left: 4px solid #00ffcc;
+  padding-left: 1rem;
+  color: #cccccc;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* Warning Block */
+.editorjs-viewer .cdx-warning {
+  background-color: #331a00;
+  color: #ffcc00;
+  border-left: 5px solid #ff9900;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Delimiter */
+.editorjs-viewer .ce-delimiter {
+  text-align: center;
+  color: #666;
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+/* Toggle Block */
+.editorjs-viewer .toggle {
+  background-color: #1a1a1a;
+  border: 1px solid #524e4e;
+  border-radius: 0.5rem;
+  color: #ccc;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.editorjs-viewer .toggle__title {
+  color: #00ffcc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editorjs-viewer .toggle__content {
+  margin-top: 0.5rem;
+}
+
+/* Images */
+.editorjs-viewer .image-tool__image-picture {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  border: 2px solid #333;
+}
+
+/* Links */
+.editorjs-viewer a {
+  color: #00ffff;
+  text-decoration: underline;
+}
+
+.editorjs-viewer a:hover {
+  color: #00ffcc;
+}

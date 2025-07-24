@@ -1,0 +1,28 @@
+<div class="min-h-screen bg-[#1a1a1a] flex items-center justify-center p-6">
+  <div class="bg-[#2c2c2c] text-white p-8 rounded-2xl w-full max-w-3xl">
+    <h2 class="text-3xl font-bold mb-6">🛡️ Manage User Roles</h2>
+
+    <form (submit)="Update()">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        @for(role of roles;let i =$index;track role.id)
+        {
+        <div>
+          <label
+            class="flex items-center space-x-3 bg-[#1e1e1e] hover:bg-[#2a2a2a] px-4 py-3 rounded-lg transition cursor-pointer">
+            <input type="checkbox" [name]="'isSelected'+i" [(ngModel)]="role.isSelected"
+              class="form-checkbox h-5 w-5 text-green-500 rounded bg-gray-700 border-gray-600" />
+            <span class="text-sm font-medium">{{role.name}}</span>
+          </label>
+        </div>
+        }
+      </div>
+
+      <div class="mt-8 flex justify-end gap-4">
+        <button type="submit"
+          class="bg-green-600 hover:bg-green-500 px-5 py-2.5 rounded-md text-sm font-semibold shadow-md">
+          Save Roles
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

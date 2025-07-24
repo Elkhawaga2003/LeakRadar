@@ -1,0 +1,31 @@
+<div class="bg-gray-950 text-white min-h-screen py-12 px-4 sm:px-8">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-extrabold text-center mb-10 text-yellow-400">🏆 Leaderboard</h1>
+
+    <div class="overflow-x-auto rounded-lg shadow-lg border border-gray-800">
+      <table class="min-w-full divide-y divide-gray-800">
+        <thead class="bg-gray-800 text-gray-300">
+          <tr>
+            <th class="px-6 py-3 text-left text-sm font-semibold tracking-wider">#</th>
+            <th class="px-6 py-3 text-left text-sm font-semibold tracking-wider">User</th>
+            <th class="px-6 py-3 text-left text-sm font-semibold tracking-wider">Points</th>
+            <th class="px-6 py-3 text-left text-sm font-semibold tracking-wider">Challenges Solved</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-900 divide-y divide-gray-800">
+          @for(user of users;track user.userName){
+          <tr class="hover:bg-gray-800 transition">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{$index+1}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex items-center gap-2">
+              <span>{{user.userName}}</span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-400 font-bold">{{user.points}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{{user.solvedChallengesCount}}</td>
+          </tr>
+
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

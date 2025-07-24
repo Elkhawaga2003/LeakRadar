@@ -1,0 +1,36 @@
+<div class="w-screen min-h-screen bg-[#121212] text-white p-6 font-mono">
+  <h2 class="text-4xl font-extrabold mb-8 text-[#00ffcc] border-b-2 border-[#00ffcc] pb-2 font-sans">
+    🧠 CTF Writeup Editor
+  </h2>
+
+  <div class="bg-[#1a1a1a] p-6 rounded-xl border border-[#333] shadow-lg space-y-6">
+    <!-- Title and Cover Avatar -->
+    <div class="flex items-center space-x-4">
+      <!-- Cover Avatar -->
+      <img *ngIf="coverPreview || data?.imgUrl" [src]="coverPreview || data?.imgUrl" alt="Cover"
+        class="w-20 h-20 rounded-full object-cover border border-gray-600 shadow-md" />
+
+      <!-- Title -->
+      <h3 class="text-2xl font-semibold text-[#00ffcc] font-sans">
+        {{ data?.title || 'Untitled Challenge' }}
+      </h3>
+    </div>
+
+    <!-- Upload Input -->
+    <div>
+      <label for="cover" class="block text-sm mb-2 text-gray-300 font-medium">Change Cover Image</label>
+      <input type="file" id="cover" accept="image/*" (change)="onCoverSelected($event)" class="w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4
+               file:rounded-lg file:border-0 file:text-sm file:font-semibold
+               file:bg-[#00ffcc] file:text-black hover:file:bg-[#00e6b3] transition" />
+    </div>
+  </div>
+
+  <!-- EditorJS Viewer -->
+  <div id="editor-view" class="editorjs-viewer max-w-none text-base leading-7 text-gray-100 mt-8"></div>
+
+  <!-- Save Button -->
+  <button (click)="saveWriteup()"
+    class="mt-6 bg-[#00ffcc] hover:bg-[#00e6b3] text-black font-bold py-2 px-4 rounded-xl transition-all">
+    💾 Save Writeup
+  </button>
+</div>

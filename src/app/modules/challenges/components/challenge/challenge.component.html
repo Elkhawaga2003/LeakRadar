@@ -1,0 +1,130 @@
+<div class="min-h-screen flex bg-[#1f1f1f] text-white font-sans">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#252525] p-6 shadow-lg border-r border-gray-700">
+    <h2 class="text-2xl font-bold mb-8">🛠 Admin</h2>
+    <nav class="space-y-4">
+      <a [routerLink]="['/dashboard']" class="block py-2 px-4 rounded-lg hover:bg-green-600 transition">Dashboard</a>
+      <a [routerLink]="['/dashboard/users']" class="block py-2 px-4 rounded-lg hover:bg-green-600 transition">Users</a>
+      <a [routerLink]="['/dashboard/EditeRoles']"
+        class="block py-2 px-4 rounded-lg hover:bg-green-600 transition">Roles</a>
+      <a [routerLink]="['/dashboard/challenges']" class="block py-2 px-4 rounded-lg bg-green-700">Challenges</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main class="flex-1 p-6 overflow-auto">
+    <header class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold">Add Challenge</h1>
+    </header>
+
+    <!-- Add Challenge Form -->
+    <section class="bg-[#2c2c2c] p-6 rounded-xl border border-gray-700 shadow max-w-4xl mx-auto">
+      <form class="space-y-6" (submit)="Add()" [formGroup]="challengeForm">
+        <!-- Title -->
+        <div>
+          <label class="block mb-1 text-sm font-medium">Title</label>
+          <input type="text" name="title" formControlName="title"
+            class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+          @if(challengeForm.get('title')?.errors?.['required']&&challengeForm.get('title')?.touched){
+          <div class="mt-2 p-3 rounded-md bg-red-600/10 text-red-400 border border-red-500 text-sm">
+            this field is required
+          </div>
+          }
+
+        </div>
+
+        <!-- Points / Category / Difficulty -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block mb-1 text-sm font-medium">Points</label>
+            <input type="number" name="points" formControlName="points"
+              class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2">
+            @if(challengeForm.get('points')?.errors?.['required']&&challengeForm.get('points')?.touched){
+            <div class="mt-2 p-3 rounded-md bg-red-600/10 text-red-400 border border-red-500 text-sm">
+              this field is required
+            </div>
+            }
+          </div>
+          <div>
+            <label class="block mb-1 text-sm font-medium">Category</label>
+            <select class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2" name="categoryId"
+              formControlName="categoryId">
+              <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-sm font-medium">Difficulty</label>
+            <select class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2" formControlName="difficulty"
+              name="difficulty">
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Flag -->
+        <div>
+          <label class="block mb-1 text-sm font-medium">Flag</label>
+          <input type="text" name="flag" formControlName="flag"
+            class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2">
+          @if(challengeForm.get('flag')?.errors?.['required']&&challengeForm.get('flag')?.touched){
+          <div class="mt-2 p-3 rounded-md bg-red-600/10 text-red-400 border border-red-500 text-sm">
+            this field is required
+          </div>
+          }
+        </div>
+
+        <!-- Upload Image / Attachment / URL -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block mb-1 text-sm font-medium">Challenge Image</label>
+            <input type="file" (change)="onCoverSelected($event)"
+              class="block w-full text-sm text-gray-400 bg-[#1f1f1f] border border-gray-600 rounded-lg cursor-pointer">
+          </div>
+          <div>
+            <label class="block mb-1 text-sm font-medium">Attachment
+              (zip/pdf)</label>
+            <input type="file" (change)="onAttchmentSelected($event)"
+              class="block w-full text-sm text-gray-400 bg-[#1f1f1f] border border-gray-600 rounded-lg cursor-pointer">
+          </div>
+          <div>
+            <label class="block mb-1 text-sm font-medium">Challenge URL (optional)</label>
+            <input type="url" placeholder="https://example.com" name="challengeUrl" formControlName="challengeUrl"
+              class="w-full bg-[#1f1f1f] border border-gray-600 rounded-lg px-4 py-2">
+          </div>
+        </div>
+
+        <!-- Visibility Toggle -->
+        <div class="flex items-center space-x-3">
+          <label class="text-sm font-medium">Visible</label>
+          <input type="checkbox" name="isVasible" formControlName="isVasible"
+            class="w-5 h-5 bg-[#1f1f1f] border border-gray-600 rounded">
+        </div>
+
+        <!-- Editor.js Placeholder -->
+        <div class="mb-6">
+          <label class="block text-sm font-semibold text-gray-300 mb-2" for="editorjs">
+            📝 Description
+          </label>
+          <div id="editorjs" class="bg-[#2a2a2a] border border-gray-700 rounded-xl p-4 shadow-inner min-h-[250px]">
+            <textarea class="w-full bg-transparent text-white placeholder-gray-500 focus:outline-none resize-none"
+              name="description" formControlName="description" rows="6"
+              placeholder="Describe the challenge here ..."></textarea>
+          </div>
+
+        </div>
+
+
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+          <button type="submit" [disabled]="challengeForm.invalid"
+            class="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg shadow">
+            <i class="lucide lucide-save"></i>
+            Save Challenge
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>

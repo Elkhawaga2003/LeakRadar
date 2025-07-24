@@ -1,0 +1,42 @@
+<div class="w-screen h-screen bg-[#2c2c2c] text-white font-sans p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">👤 Users</h2>
+    <button [routerLink]="['/auth/register']"
+      class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium shadow">
+      + Add User
+    </button>
+  </div>
+
+  <div class="h-[calc(100vh-6rem)] overflow-auto border border-gray-700 rounded-xl shadow-md">
+    <table class="min-w-full text-sm text-left text-gray-200">
+      <thead class="bg-[#1e1e1e] text-gray-400 sticky top-0 z-10">
+        <tr>
+          <th class="px-6 py-4">Email</th>
+          <th class="px-6 py-4">mange User in Role</th>
+          <th class="px-6 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-700">
+        @for(user of users;track user.id){
+        <tr class="hover:bg-[#1a1a1a] transition">
+
+          <td class="px-6 py-4 font-medium">{{user.email}}</td>
+          <td class="px-6 py-4"> <button [routerLink]="['/dashboard/roles',user.id]"
+              class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded text-xs">
+              Add Role
+            </button></td>
+          <td class="px-6 py-4 space-x-2">
+            <button [routerLink]="['/dashboard/update',user.id]" routerLinkActive="router-link-active"
+              class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-xs">
+              Update
+            </button>
+            <button (click)="Delete(user.id)" class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded text-xs">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
